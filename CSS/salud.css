@@ -1,0 +1,50 @@
+/* Estilos para el sector de salud */
+.health-section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.523);
+    margin-bottom: 30px;
+}
+
+.health-section h2 {
+    color: #000;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.health-info {
+    margin-bottom: 20px;
+}
+
+.health-info p {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.health-resources h3 {
+    color: #000;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.health-resources ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.health-resources li {
+    margin-bottom: 10px;
+}
+
+.health-resources a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.health-resources a:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+

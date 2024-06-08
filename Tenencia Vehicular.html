@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tenencia Vehicular">
+    <title>Tenencia Vehicular</title>
+    <link rel="icon" href="IMG/favicon.ico">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+        .recursos-salud {
+            text-decoration-color: #000;
+            color: #000000; 
+        }
+        .jumbotron {
+            text-align: center;
+            background-color: #380000;
+            color: #fff;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            border-radius: 0;
+        }
+        .card {
+            margin-bottom: 2rem;
+            border: none;
+            border-radius: 0;
+        }
+        .card-img-top {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+        .card-title {
+            color: #000000;
+        }
+        .list-group-item {
+            border: none;
+            border-bottom: 1px solid #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+
+        }
+        .list-group-item:last-child {
+            border-bottom: none;
+            text-decoration: none;
+            font-weight: bold;
+
+
+        }
+        .boton-tramitar {
+            background-color: #380000;
+            border-color: #380000;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .boton-tramitar:hover {
+            background-color: #5c0000;
+            border-color: #ff0000;
+        }
+        
+        footer {
+            background-color: #380000;
+            color: rgb(255, 255, 255);
+            padding: 0px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .footer-info {
+            flex: 20;
+            padding: 10px;
+            min-width: 200px;
+            text-align: center;
+        }
+
+        .map-container {
+            flex: 50;
+            padding: 0; /* Eliminamos el padding para que el mapa ocupe todo el espacio */
+            min-width: 500px;
+            height: 200px;
+            position: relative; /* Agregamos position relative para posicionar el mapa */
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none; /* Corregimos el error de sintaxis en border */
+            position: absolute; /* Cambiamos la posición del mapa a absoluta */
+            top: 0; /* Posicionamos el mapa en la parte superior del contenedor */
+            left: 0; /* Posicionamos el mapa en la parte izquierda del contenedor */
+        }
+
+        .contact-form {
+            flex: 20;
+            padding: 10px;
+            min-width: 200px;
+        }
+
+        .footer-section {
+            background-color: #000000;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .footer-section p {
+            margin: 0;
+            color: white;
+        }
+        .login-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+        }
+        .login-form-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+        .login-form-box {
+            background-color: #000;
+            color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .login-form h2 {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            color: #000;
+        }
+
+        .boton-enviar{
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #380000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .boton-enviar:hover{
+            background-color: #710000;
+        }
+
+        .additional-links {
+            margin-top: 15px;
+        }
+        .additional-links a {
+            display: block;
+            margin-bottom: 10px;
+            color: #000000;
+            text-decoration: none;
+        }
+        .additional-links a:hover {
+            text-decoration: underline;
+        }
+        .menu-container {
+            text-align: center; /* Centra horizontalmente los elementos */
+        }
+
+        .main-menu {
+            display: inline-block; /* Para que se centre horizontalmente */
+            position: relative;
+        }
+
+        .dropdown {
+            background-color: #fff;
+            position: absolute;
+            top: 100%; /* Ajusta la posición de los elementos desplegados */
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1;
+            transition: opacity 0.3s ease, top 0.3s ease; /* Añade una animación de transición suave */
+            border-radius: 0 0 8px 8px; /* Ajusta los bordes del menú desplegable */
+        }
+
+        menu {
+            width: 100%;
+            padding: 0 30px;
+            background-color: #000;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            color: #fff;
+            font-size: 2rem;
+        }
+        menu > ul {
+            padding: 0;
+            color: #fff;
+            display: flex;
+            list-style: none;
+        }
+        menu > ul > li {
+            margin-right: 20px;
+            position: relative;
+        }
+        .main-menu > li > a {
+            display: block;
+            padding: 20px;
+            color: #fff;
+            font-weight: bold;
+        }
+        .main-menu > li > a:hover {
+            background-color: #380000;
+            color: #fff;
+        }
+        .dropdown {
+            background-color: #fff;
+            position: absolute;
+            top: 60px;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1;
+            transition: all 0.25s ease;
+            box-shadow: 0px 1px 10px rgba(0,0,0,0.25);
+            border-radius: 0 0 8px 8px;
+        }
+        .dropdown > ul {
+            padding: 20px;
+            margin: 0;
+            list-style: none;
+        }
+        .dropdown > ul > li {
+            padding: 10px 0;
+        }
+        .dropdown > ul > li > a {
+            color: #333;
+        }
+        .dropdown > ul > li > a:hover {
+            color: #cecece;
+        }
+        .main-menu > li:hover .dropdown {
+            visibility: visible;
+            opacity: 1;
+        }
+        * {box-sizing:border-box;}
+        body {font-family:Arial, sans-serif; background-color:#ffffff;}
+        .clearfix {content:""; display:table;}
+        menu, ul, li, a {margin: 0;; padding: 0;;}
+        li {list-style:none;}
+        a {text-decoration:none; display:block; cursor:pointer;}
+
+        menu {width:100%; padding:0 350px; background-color:#380000;margin:0 auto;}
+        .logo {color:#fff; font-size:3.5rem;}
+        menu > ul {padding:0px; color:#ffffff; float:right; }
+        menu > ul > li {float:left; list-style:none; position:relative;  margin-right:20px;}
+        .main-menu > li > a {display:block; padding:20px; color:#ffffff; position:relative; z-index:5 0;}
+        .main-menu > li:hover > a {background-color:#fff;  color:#333;}
+        .main-menu > li:hover > a:after {top: 100%;
+        left: 50%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-color: rgba(0, 0, 0, 0);
+        border-top-color: #fff;
+        border-width: 20px;
+        margin-left: -20px;}*/
+
+        .search {padding:22px 0 18px 0; margin-right:0;}
+
+        .dropdown {background-color:#380000;position:absolute; right:-50px; top:58px;  /*width:550px;*/ display:flex; opacity:0; visibility:hidden; z-index:1; transition:all 0.25s ease 0s; box-shadow:0px 1px 10px rgba(0,0,0,0.25);}
+        .dropdown > ul {width:180px; flex:1; margin:20px 0 20px 5px; border-left:1px solid #cacaca; padding-left:5px;}
+        .dropdown > ul:first-of-type {margin-left:10px; padding-left:0; border-left:0;}
+        .dropdown > ul:last-of-type {margin-right:10px;}
+        .dropdown > ul > li {padding:10px 20px;  }
+
+        .dropdown > ul > li:first-of-type {padding-bottom:5px; margin-bottom:5px; font-size:1.1rem; background-color:#380000;}
+        .dropdown > ul > li:first-of-type a {cursor:default; }
+        .dropdown > ul > li:first-of-type a:hover {color:#cecece;}
+        .dropdown > ul > li > a {color:#ffffff;}
+        .dropdown a:hover {color:tomato;}
+
+        .main-menu > li:hover .dropdown {visibility:visible; opacity:1; transition-delay:0s;}
+    </style>
+</head>
+<body>
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="IMG/banner mante2.png" class="d-block w-100" alt="Banner 1">
+        </div>
+        </div>
+        <menu class="clearfix">
+            <div class=""></div>
+            <ul class="main-menu clearfix">
+            <li>
+                <a href="inicio.html" class="input-group">Inicio</a>
+              </li>
+              <li>
+                <a href="#">Sectores</a>
+                <div class="dropdown clearfix">
+                  <ul>
+                    <li><a href="Turismo.html">Turismo</a></li>
+                    <li><a href="Salud.html">Salud</a></li>
+                    <li><a href="Educacion.html">Educacion</a></li>
+                    <li><a href="Cultura.html">Cultura</a></li>
+                  </ul>
+                  <ul>
+                    <li><a href="Deporte.html">Deporte</a></li>
+                    <li><a href="MedioAmbiente.html">Medio Ambiente</a></li>
+                    <li><a href="Seguridad.html">Seguridad</a></li>
+                    <li><a href="Economia.html">Economia</a></li>
+                  </ul>
+              </li>
+          
+              <li>
+                <a href="ServicioAComunidad.html" class="input-group">Servicio a Comunidad</a>
+              </li>
+              
+              <li>
+                <a href="form.html" class="input-group">Iniciar Sesión</a>
+              </li>
+            </ul>
+          </menu>
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-4">Trámite de Tenencia Vehicular</h1>
+        </div>
+    </div>
+    <!-- Contenido principal -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <form id="tenenciaForm">
+                    <div class="form-group">
+                        <label for="marca">Marca del vehículo:</label>
+                        <input type="text" id="marca" name="marca" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="modelo">Modelo del vehículo:</label>
+                        <input type="text" id="modelo" name="modelo" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="anio">Año del vehículo:</label>
+                        <input type="number" id="anio" name="anio" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="placa">Placa del vehículo:</label>
+                        <input type="text" id="placa" name="placa" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary boton-tramitar">Tramitar Tenencia</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-info">
+            <h3>GOBIERNO MUNICIPAL DEL MANTE 2024 - 2027</h3>
+            <p>Dirección: Av Juarez 101, Zona Centro, 89800 Cdad. Mante, Tamps.</p>
+            <p>Teléfono: 831 232 8136 y 831 232 2924</p>
+        </div>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.5805613253488!2d-98.97429892491692!3d22.74382627937014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8678b89a4e9f04f7%3A0xe42971633f5393a7!2sPresidencia%20Municipal%20El%20Mante!5e0!3m2!1ses-419!2smx!4v1717110328473!5m2!1ses-419!2smx" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // JavaScript para procesar el formulario de tenencia vehicular
+        document.getElementById("tenenciaForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Evitar que se envíe el formulario de manera convencional
+            
+            // Obtener los valores del formulario
+            var marca = document.getElementById("marca").value;
+            var modelo = document.getElementById("modelo").value;
+            var anio = document.getElementById("anio").value;
+            var placa = document.getElementById("placa").value;
+            
+            // Aquí puedes agregar el código JavaScript para procesar el formulario, como enviar los datos a un servidor
+            // Por ahora, solo mostramos los datos ingresados
+            alert("Marca: " + marca + "\nModelo: " + modelo + "\nAño: " + anio + "\nPlaca: " + placa);
+        });
+    </script>
+</body>
+</html>

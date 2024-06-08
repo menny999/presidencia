@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sector de Cultura de un Municipio">
+    <title>Sector de Cultura Municipal</title>
+    <link rel="icon" href="IMG/favicon.ico">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+        .jumbotron {
+            background-color: #380000;
+            color: #fff;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            border-radius: 0;
+        }
+        .card {
+            margin-bottom: 2rem;
+            border: none;
+            border-radius: 0;
+        }
+        .card-title {
+            color: #000000;
+        }
+        .list-group-item {
+            border: none;
+            border-bottom: 1px solid #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .list-group-item:last-child {
+            border-bottom: none;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        footer {
+            background-color: #380000;
+            color: rgb(255, 255, 255);
+            padding: 0px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .footer-info {
+            flex: 20;
+            padding: 10px;
+            min-width: 200px;
+            text-align: center;
+        }
+        .map-container {
+            flex: 50;
+            padding: 0;
+            min-width: 500px;
+            height: 200px;
+            position: relative;
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .boton-enviar {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #380000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .boton-enviar:hover {
+            background-color: #710000;
+        }
+        .additional-links {
+            margin-top: 15px;
+        }
+        .additional-links a {
+            display: block;
+            margin-bottom: 10px;
+            color: #000000;
+            text-decoration: none;
+        }
+        .additional-links a:hover {
+            text-decoration: underline;
+        }
+        .menu-container {
+            text-align: center;
+        }
+        .main-menu {
+            display: inline-block;
+            position: relative;
+        }
+        .dropdown {
+            background-color: #fff;
+            position: absolute;
+            top: 100%;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1;
+            transition: opacity 0.3s ease, top 0.3s ease;
+            border-radius: 0 0 8px 8px;
+        }
+        menu {
+            width: 100%;
+            padding: 0 30px;
+            background-color: #000;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            color: #fff;
+            font-size: 2rem;
+        }
+        menu > ul {
+            padding: 0;
+            color: #fff;
+            display: flex;
+            list-style: none;
+        }
+        menu > ul > li {
+            margin-right: 20px;
+            position: relative;
+        }
+        .main-menu > li > a {
+            display: block;
+            padding: 20px;
+            color: #fff;
+            font-weight: bold;
+        }
+        .main-menu > li > a:hover {
+            background-color: #380000;
+            color: #fff;
+        }
+        .dropdown {
+            background-color: #fff;
+            position: absolute;
+            top: 60px;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1;
+            transition: all 0.25s ease;
+            box-shadow: 0px 1px 10px rgba(0,0,0,0.25);
+            border-radius: 0 0 8px 8px;
+        }
+        .dropdown > ul {
+            padding: 20px;
+            margin: 0;
+            list-style: none;
+        }
+        .dropdown > ul > li {
+            padding: 10px 0;
+        }
+        .dropdown > ul > li > a {
+            color: #333;
+        }
+        .dropdown > ul > li > a:hover {
+            color: #cecece;
+        }
+        .main-menu > li:hover .dropdown {
+            visibility: visible;
+            opacity: 1;
+        }
+        * {box-sizing:border-box;}
+        body {font-family:Arial, sans-serif; background-color:#ffffff;}
+        .clearfix {content:""; display:table;}
+        menu, ul, li, a {margin: 0; padding: 0;}
+        li {list-style:none;}
+        a {text-decoration:none; display:block; cursor:pointer;}
+
+        menu {width:100%; padding:0 350px; background-color:#380000; margin:0 auto;}
+        .logo {color:#fff; font-size:3.5rem;}
+        menu > ul {padding:0px; color:#ffffff; float:right;}
+        menu > ul > li {float:left; list-style:none; position:relative; margin-right:20px;}
+        .main-menu > li > a {display:block; padding:20px; color:#ffffff; position:relative; z-index:5 0;}
+        .main-menu > li:hover > a {background-color:#fff;  color:#333;}
+        .main-menu > li:hover > a:after {top: 100%;
+            left: 50%;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+            border-color: rgba(0, 0, 0, 0);
+            border-top-color: #fff;
+            border-width: 20px;
+            margin-left: -20px;}
+        .search {padding:22px 0 18px 0; margin-right:0;}
+        .dropdown {background-color:#380000;position:absolute; right:-50px; top:58px; display:flex; opacity:0; visibility:hidden; z-index:1; transition:all 0.25s ease 0s; box-shadow:0px 1px 10px rgba(0,0,0,0.25);}
+        .dropdown > ul {width:180px; flex:1; margin:20px 0 20px 5px; border-left:1px solid #cacaca; padding-left:5px;}
+        .dropdown > ul:first-of-type {margin-left:10px; padding-left:0; border-left:0;}
+        .dropdown > ul:last-of-type {margin-right:10px;}
+        .dropdown > ul > li {padding:10px 20px;}
+        .dropdown > ul > li:first-of-type {padding-bottom:5px; margin-bottom:5px; font-size:1.1rem; background-color:#380000;}
+        .dropdown > ul > li:first-of-type a {cursor:default;}
+        .dropdown > ul > li:first-of-type a:hover {color:#cecece;}
+        .dropdown > ul > li > a {color:#ffffff;}
+        .dropdown a:hover {color:tomato;}
+        .main-menu > li:hover .dropdown {visibility:visible; opacity:1; transition-delay:0s;}
+    </style>
+</head>
+<body>
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="IMG/banner mante2.png" class="d-block w-100" alt="Banner 1">
+        </div>
+    </div>
+    <menu class="clearfix">
+        <div class=""></div>
+        <ul class="main-menu clearfix">
+            <li>
+                <a href="inicio.html" class="input-group">Inicio</a>
+            </li>
+            <li>
+                <a href="#">Sectores</a>
+                <div class="dropdown clearfix">
+                    <ul>
+                        <li><a href="Turismo.html">Turismo</a></li>
+                        <li><a href="Salud.html">Salud</a></li>
+                        <li><a href="Educacion.html">Educación</a></li>
+                        <li><a href="Cultura.html">Cultura</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="Deporte.html">Deporte</a></li>
+                        <li><a href="MedioAmbiente.html">Medio Ambiente</a></li>
+                        <li><a href="Seguridad.html">Seguridad</a></li>
+                        <li><a href="Economia.html">Economia</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a href="ServicioAComunidad.html" class="input-group">Servicio a Comunidad</a>
+              </li>
+              
+              <li>
+                <a href="form.html" class="input-group">Iniciar Sesión</a>
+              </li>
+        </ul>
+    </menu>
+
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-4">Sector de Cultura Municipal</h1>
+            <p class="lead">Bienvenido al sector de cultura de nuestro municipio. Aquí encontrarás información sobre actividades culturales, eventos, y más.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Recursos Culturales</h5>
+                        <ul>
+                            <li class="list-group-item"><a href="#">Teatros y Auditorios</a></li>
+                            <li class="list-group-item"><a href="#">Museos</a></li>
+                            <li class="list-group-item"><a href="#">Bibliotecas</a></li>
+                            <li class="list-group-item"><a href="#">Galerías de Arte</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Misión del Sector de Cultura</h5>
+                        <p class="card-text">Nuestra misión es promover el desarrollo cultural, preservar el patrimonio, y fomentar el acceso a la cultura para todos los habitantes de nuestro municipio.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-info">
+            <h3>GOBIERNO MUNICIPAL DEL MANTE 2024 - 2027</h3>
+            <p>Dirección: Av Juarez 101, Zona Centro, 89800 Cdad. Mante, Tamps.</p>
+            <p>Teléfono: 831 232 8136 y 831 232 2924</p>
+        </div>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.5805613253488!2d-98.97429892491692!3d22.74382627937014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8678b89a4e9f04f7%3A0xe42971633f5393a7!2sPresidencia%20Municipal%20El%20Mante!5e0!3m2!1ses-419!2smx!4v1717110328473!5m2!1ses-419!2smx" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </footer>
+
+</body>
+</html>

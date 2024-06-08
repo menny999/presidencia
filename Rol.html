@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleccionar Rol</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Estilos generales */
+     body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        /* Contenedor flexible principal */
+        .flex {
+            display: flex;
+        }
+        
+        /* Contenedor de columna flexible */
+        .flex-col {
+            flex-direction: column;
+        }
+        
+        /* Contenedor de vista completa */
+        .min-h-[100dvh] {
+            min-height: 100vh;
+        }
+        
+        /* Estilos del encabezado */
+        header {
+            background-color: #1a202c;
+            color: white;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        header .text-2xl {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        header nav {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        header a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        header a:hover {
+            text-decoration: none;
+            color: #edf2f7;
+        }
+        
+        /* Estilos del contenido principal */
+        main {
+            flex: 1;
+            background-color: #e2e8f0;
+            padding: 3rem 1.5rem;
+        }
+        
+        main .max-w-4xl {
+            max-width: 64rem;
+            margin: 0 auto;
+        }
+        
+        main .text-center {
+            text-align: center;
+        }
+        
+        main h1 {
+            font-size: 2.25rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        main p {
+            color: #718096;
+            font-size: 1.125rem;
+        }
+        
+        /* Estilos de los enlaces de rol */
+        .grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .grid-cols-1 {
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+        
+        .sm\:grid-cols-3 {
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+        
+        @media (min-width: 640px) {
+            .sm\:grid-cols-3 {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+        
+        a {
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: inherit;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        a:hover {
+            background-color: #edf2f7;
+            color: inherit;
+        }
+        
+        a svg {
+            height: 3rem;
+            width: 3rem;
+            margin-bottom: 1rem;
+            color: inherit;
+        }
+        
+        a h2, a p {
+            text-decoration: none;
+            color: inherit;
+            text-decoration: none;
+
+        }
+        
+        a:hover h2, a:hover p {
+            text-decoration: none;
+            color: inherit;
+            text-decoration: none;
+
+        }
+        
+        a h2 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: inherit;
+        }
+        
+        a p {
+            color: #ffffff;
+            text-align: center;
+            text-decoration: none;
+
+        }
+        /* Estilos del pie de página */
+        footer {
+            background-color: #380000;
+            color: rgb(255, 255, 255);
+            padding: 0px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .footer-info {
+            flex: 20;
+            padding: 10px;
+            min-width: 200px;
+            text-align: center;
+        }
+
+        .map-container {
+            flex: 50;
+            padding: 0; /* Eliminamos el padding para que el mapa ocupe todo el espacio */
+            min-width: 500px;
+            height: 200px;
+            position: relative; /* Agregamos position relative para posicionar el mapa */
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none; /* Corregimos el error de sintaxis en border */
+            position: absolute; /* Cambiamos la posición del mapa a absoluta */
+            top: 0; /* Posicionamos el mapa en la parte superior del contenedor */
+            left: 0; /* Posicionamos el mapa en la parte izquierda del contenedor */
+        }
+
+        .contact-form {
+            flex: 20;
+            padding: 10px;
+            min-width: 200px;
+        }
+
+        .footer-section {
+            background-color: #000000;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .footer-section p {
+            margin: 0;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="flex flex-col min-h-[100dvh]">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="IMG/banner mante2.png" class="d-block w-100" alt="Banner 1">
+                </div>
+            </div>
+        </div>
+        <main class="flex-1 bg-gray-100 dark:bg-gray-800 py-12 px-6">
+            <div class="max-w-4xl mx-auto space-y-8">
+                <div class="text-center">
+                    <h1 class="text-4xl font-bold mb-4">Bienvenido a Presidencia Municipal del Mante</h1>
+                    <p class="text-gray-500 dark:text-gray-400 text-lg">
+                        Accede a los servicios y recursos del gobierno de manera fácil y segura.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    <a href="inicio.html" class="bg-white dark:bg-gray-900 dark:text-white rounded-lg shadow-md p-6 flex flex-col items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-12 w-12 mb-4">
+                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        <h2 class="text-xl font-bold mb-2">Ciudadano</h2>
+                        <p class="text-gray-500 dark:text-gray-400 text-center">
+                            Accede a los servicios públicos, realiza trámites y consulta información.
+                        </p>
+                    </a>
+                    <a href="Tabajador.html" class="bg-white dark:bg-gray-900 dark:text-white rounded-lg shadow-md p-6 flex flex-col items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-12 w-12 mb-4">
+                            <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                            <rect width="20" height="14" x="2" y="6" rx="2"></rect>
+                        </svg>
+                        <h2 class="text-xl font-bold mb-2">Trabajador</h2>
+                        <p class="text-gray-500 dark:text-gray-400 text-center">
+                            Gestiona tus trámites laborales y accede a información relevante.
+                        </p>
+                    </a>
+                    <a class="bg-white dark:bg-gray-900 dark:text-white rounded-lg shadow-md p-6 flex flex-col items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" href="Presidente.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-12 w-12 mb-4">
+                            <path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"></path>
+                            <path d="M5 21h14"></path>
+                        </svg>
+                        <h2 class="text-xl font-bold mb-2">Presidente</h2>
+                        <p class="text-gray-500 dark:text-gray-400 text-center">
+                            Accede a herramientas y recursos exclusivos para el gobierno.
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </main>
+
+    <footer>
+        <div class="footer-info">
+            <h3>GOBIERNO MUNICIPAL DEL MANTE 2024 - 2027</h3>
+            <p>Dirección: Av Juarez 101, Zona Centro, 89800 Cdad. Mante, Tamps.</p>
+            <p>Teléfono: 831 232 8136 y 831 232 2924</p>
+        </div>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.5805613253488!2d-98.97429892491692!3d22.74382627937014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8678b89a4e9f04f7%3A0xe42971633f5393a7!2sPresidencia%20Municipal%20El%20Mante!5e0!3m2!1ses-419!2smx!4v1717110328473!5m2!1ses-419!2smx" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </footer>
+</div>
+
+</body>
+</html>

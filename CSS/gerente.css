@@ -1,0 +1,17 @@
+.container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.hidden {
+    display: none;
+}
+
+#productDetails {
+    margin-top: 20px;
+}
+
+#productDetails img {
+    max-width: 200px;
+    margin-top: 10px;
+}

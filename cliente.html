@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pantalla del Cliente - Tienda</title>
+    <link rel="stylesheet" href="CSS/cliente.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Cliente</h1>
+        </div>
+        <div class="content">
+            <div class="search">
+                <h2>Búsqueda de Cliente</h2>
+                <input type="text" id="clientID" placeholder="ID del cliente">
+                <button onclick="searchClient()">Buscar</button>
+                <button onclick="openPage('Registro')">Registrarme</button>
+                <div id="clientDetails"></div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="JS/cliente.js"></script>
+</body>
+</html>
